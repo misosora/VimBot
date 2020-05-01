@@ -14,8 +14,15 @@ def quarentena(update, context):
 def fofura(update, context):
     g = random.randint(1,100)
     gg = (100 - g)
+	
+    users = [update.effective_chat.username, g, gg]
+
+    if len(users) == len(set(users)):
+        return g
+        return gg
+    
     f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=f)
+    context.bot.send_message(chat_id=update.effective_chat.username, text=f)
 
 def distro(update, context):
     lista = ['Debian','Arch','Fedora','Ubuntu','Linux Mint','Manjaro','Gentoo','CentOS','Kali','elementary OS','Puppy','Parrot','Peppermint OS','Oracle']
