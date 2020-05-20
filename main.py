@@ -26,6 +26,9 @@ def hal(update, context):
     abc = "I'm sorry, @{}. I'm afraid I can't do that.".format(update.effective_user.username)
     context.bot.send_message(chat_id=update.effective_chat.id, text=abc)
 
+def corona(update, context):
+	context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('Downloads/corona.mp3', 'rb'))
+
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
@@ -39,6 +42,7 @@ def main():
     dp.add_handler(CommandHandler("fofura", fofura))
     dp.add_handler(CommandHandler("distro", distro))
     dp.add_handler(CommandHandler("hal", hal))
+    dp.add_handler(CommandHandler("corona", corona))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
