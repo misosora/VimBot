@@ -27,7 +27,7 @@ def hal(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=abc)
 
 def corona(update, context):
-	context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('Downloads/corona.mp3', 'rb'))
+	context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('corona.mp3', 'rb'))
 
 def main():
     logger = logging.getLogger(__name__)
