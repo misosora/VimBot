@@ -12,7 +12,7 @@ def quarentena(update, context):
 	context.bot.sendPhoto(chat_id=update.effective_chat.id, photo="https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg")
 
 def fofura(update, context):
-    g = random.randint(1,100)
+    g = random.randint(90,100)
     gg = (100 - g)
     f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
     context.bot.send_message(chat_id=update.effective_chat.id, text=f)
