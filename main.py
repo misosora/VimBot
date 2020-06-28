@@ -13,8 +13,11 @@ def quarentena(update, context):
 
 def fofura(update, context):
     g = random.randint(90,100)
-    gg = (100 - g)
-    f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
+    gg = (100-g)
+    if (update.effective_user.username == 'vim_miv'):
+	    f = "O nível de fofura de @vim_miv é 100% e o seu nível de arch user é 0% (´｡• ᵕ •｡`)"
+    else:
+        f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
     context.bot.send_message(chat_id=update.effective_chat.id, text=f)
 
 def distro(update, context):
