@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler
 import logging
 import random
 
-TOKEN = "1266640579:AAGFkvjRH694xDSyJGY_q3B9ht3etud8wHg"
+TOKEN = "1266640579:AAHyj9CNRpFSq1Zimt_u26rN9IQjJRXn6hg"
 
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
