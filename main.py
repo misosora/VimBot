@@ -4,6 +4,8 @@ import random
 
 from token.py import *
 
+TOKEN =
+
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
