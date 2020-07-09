@@ -2,9 +2,7 @@ from telegram.ext import Updater, CommandHandler
 import logging
 import random
 
-from token.py import getToken
-
-TOKEN = getToken()
+from token.py import *
 
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
