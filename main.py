@@ -2,8 +2,6 @@ from telegram.ext import Updater, CommandHandler
 import logging
 import random
 
-import os
-
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
@@ -37,7 +35,7 @@ def main():
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s [%(levelname)s] %(message)s")
 
-    updater = Updater(token=os.TOKEN, use_context=True)
+    updater = Updater(token=TOKEN, use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
