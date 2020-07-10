@@ -1,7 +1,8 @@
-import token
 from telegram.ext import Updater, CommandHandler
 import logging
 import random
+
+import os
 
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
@@ -36,7 +37,7 @@ def main():
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s [%(levelname)s] %(message)s")
 
-    updater = Updater(token=token.token, use_context=True)
+    updater = Updater(token=os.TOKEN, use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
