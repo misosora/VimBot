@@ -2,8 +2,6 @@ from telegram.ext import Updater, CommandHandler
 import logging
 import random
 
-TOKEN = "1266640579:AAH4B1NKzO2VBqlMyQXn8qSuFChCoh1Dar4"
-
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
