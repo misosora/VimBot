@@ -34,6 +34,12 @@ def froggypic(update, context):
     caption = froggy_pics[randomPhoto]["cap"]
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
+def asterisco(update, context):
+    args = context.args
+    message = [f"{len(word)*'*'}" for word in args]
+    message = ' '.join(message)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
@@ -49,6 +55,7 @@ def main():
     dp.add_handler(CommandHandler("hal", hal))
     dp.add_handler(CommandHandler("corona", corona))
     dp.add_handler(CommandHandler("froggypic", froggypic))
+    dp.add_handler(CommandHandler("asterisco", asterisco))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
