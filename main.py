@@ -40,6 +40,35 @@ def asterisco(update, context):
     message = ' '.join(message)
     context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
+def asteriscoMisto(update, context):
+    message = update.message.text.partition(' ')[2]
+    newMessage=""
+    if '*' not in message:
+        for count in range(len(message)):
+            if message[count] == ' ':
+                newMessage += ' '
+            else:
+                newMessage += '*'
+    elif message.count('#') % 2 == 0:
+        asteriscoAtivado = 0
+        for count in range(len(message)):
+            if message[count] == '*':
+                if asteriscoAtivado:
+                    asteriscoAtivado = 0
+                else:
+                    asteriscoAtivado = 1
+            else:
+                if asteriscoAtivado:
+                    newMessage += '*'
+                else:
+                    newMessage += message[count]
+    else:
+        newMessage = "{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=newMessage)
+            
+
+
+
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
@@ -56,6 +85,7 @@ def main():
     dp.add_handler(CommandHandler("corona", corona))
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
+    dp.add_handler(CommandHandler("asteriscoMisto", asteriscoMisto))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
