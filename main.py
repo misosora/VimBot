@@ -1,6 +1,7 @@
 from telegram.ext import Updater, CommandHandler
 import logging
 import random
+from froggies import froggy_pics
 
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
@@ -27,12 +28,18 @@ def hal(update, context):
 def corona(update, context):
 	context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('corona.mp3', 'rb'))
 
+def froggypic(update, context):
+    randomPhoto = random.choice(list(froggy_pics.keys()))
+    image = froggy_pics[randomPhoto]["img"]
+    caption = froggy_pics[randomPhoto]["cap"]
+    context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
+
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s [%(levelname)s] %(message)s")
 
-    updater = Updater(token=TOKEN, use_context=True)
+    updater = Updater(token='1377675743:AAG1hUpustjKe5S69WuJKA3BdXRZEja1V5U', use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
@@ -41,6 +48,7 @@ def main():
     dp.add_handler(CommandHandler("distro", distro))
     dp.add_handler(CommandHandler("hal", hal))
     dp.add_handler(CommandHandler("corona", corona))
+    dp.add_handler(CommandHandler("froggypic", froggypic))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
