@@ -1,87 +1,86 @@
-
 froggy_pics = { 
     "blueberry": {
-        "img": "./Froggies/blueberry.jpg",
-        "cap": "<i>My first D. tinctorius ‘Patricia’ named Blueberry</i>"
+        "file": "./Froggies/blueberry.jpg",
+        "caption": "My first D. tinctorius ‘Patricia’ named Blueberry"
     },
     "sleepy": {
-        "img": "./Froggies/sleepy.jpg",
-        "cap":  "<i>sleepy baby</i>"
+        "file": "./Froggies/sleepy.jpg",
+        "caption": "sleepy baby"
     },
     "sexy": {
-        "img": "./Froggies/sexy.jpg",
-        "cap":  "<i>Look at my handsome amphibian</i>"
+        "file": "./Froggies/sexy.jpg",
+        "caption": "Look at my handsome amphibian"
     },
     "babycute": {
-        "img": "./Froggies/babycute.jpg",
-        "cap":  "<i>Did a photo shoot with my babies today :)</i>"
+        "file": "./Froggies/babycute.jpg",
+        "caption": "Did a photo shoot with my babies today :)"
     },
     "russochan": {
-        "img": "./Froggies/russochan.jpg",
-        "cap":  "<i>“Those crickets is for me?, Russo-chan?”</i>"
+        "file": "./Froggies/russochan.jpg",
+        "caption": "“Those crickets is for me?, Russo-chan?”"
     },
     "lonely": {
-        "img": "./Froggies/lonely.jpg",
-        "cap":  "<i>Lone little squish</i>"
+        "file": "./Froggies/lonely.jpg",
+        "caption": "Lone little squish"
     },
     "toilet": {
-        "img": "./Froggies/toilet.jpg",
-        "cap":  "<i>😳 what is going on in here</i>"
+        "file": "./Froggies/toilet.jpg",
+        "caption": "😳 what is going on in here"
     },
     "guacamole": {
-        "img": "./Froggies/guacamole.jpg",
-        "cap":  "<i>Guacamole Boy</i>"
+        "file": "./Froggies/guacamole.jpg",
+        "caption": "Guacamole Boy"
     },
     "facetime": {
-        "img": "./Froggies/facetime.jpg",
-        "cap":  "<i>He's Irwin in facetime with my bf</i>"
+        "file": "./Froggies/facetime.jpg",
+        "caption": "He's Irwin in facetime with my bf"
     },
     "flower": {
-        "img": "./Froggies/flower.jpg",
-        "cap":  "<i>Frog on Mums, must be fall</i>"
+        "file": "./Froggies/flower.jpg",
+        "caption": "Frog on Mums, must be fall"
     },
     "role": {
-        "img": "./Froggies/role.jpg",
-        "cap":  "<i>Them💚</i>"
+        "file": "./Froggies/role.jpg",
+        "caption": "Them💚"
     },
     "doggo": {
-        "img": "./Froggies/doggo.jpg",
-        "cap":  "<i>Awh, did you make a friend out on your hop?</i>"
+        "file": "./Froggies/doggo.jpg",
+        "caption": "Awh, did you make a friend out on your hop?"
     },
     "summer": {
-        "img": "./Froggies/summer.jpg",
-        "cap":  "<i>Is my frog a boy or a girl (they lack the thumb pads as far as I can see and their throat isn’t dark)?</i>"
+        "file": "./Froggies/summer.jpg",
+        "caption": "Is my frog a boy or a girl (they lack the thumb pads as far as I can see and their throat isn’t dark)?"
     },
     "leaves": {
-        "img": "./Froggies/leaves.jpg",
-        "cap":  "<i>ID help</i>"
+        "file": "./Froggies/leaves.jpg",
+        "caption": "ID help"
     },
     "stuck": {
-        "img": "./Froggies/stuck.jpg",
-        "cap":  "<i>Cross post from frog spotting Facebook group. Too good not to share.</i>"
+        "file": "./Froggies/stuck.jpg",
+        "caption": "Cross post from frog spotting Facebook group. Too good not to share."
     },
     "companionship": {
-        "img": "./Froggies/companionship.jpg",
-        "cap":  "<i>Belle Pepper and Olive Oil (kids named them) 😏</i>"
+        "file": "./Froggies/companionship.jpg",
+        "caption": "Belle Pepper and Olive Oil (kids named them) 😏"
     },
     "meaning": {
-        "img": "./Froggies/meaning.jpg",
-        "cap":  "<i>GREEN</i>"
+        "file": "./Froggies/meaning.jpg",
+        "caption": "GREEN"
     },
     "shy": {
-        "img": "./Froggies/shy.jpg",
-        "cap":  "<i>Found this little guy on my evening walk</i>"
+        "file": "./Froggies/shy.jpg",
+        "caption": "Found this little guy on my evening walk"
     },
     "seam": {
-        "img": "./Froggies/seam.jpg",
-        "cap":  "<i>Finished this commission. House warming gift for a body builder who loves frogs.</i>"
+        "file": "./Froggies/seam.jpg",
+        "caption": "Finished this commission. House warming gift for a body builder who loves frogs."
     },
     "camouflage": {
-        "img": "./Froggies/camouflage.jpg",
-        "cap":  "<i>A new style of frog stacking</i>"
+        "file": "./Froggies/camouflage.jpg",
+        "caption": "A new style of frog stacking"
     },
     "spiderfrog": {
-        "img": "./Froggies/spiderfrog.jpg",
-        "cap":  "<i>I’ve had this little dude in my care for a few days and i’m having a hard time naming him, anyone have any suggestions? 🥺💕</i>"
+        "file": "./Froggies/spiderfrog.jpg",
+        "caption": "I’ve had this little dude in my care for a few days and i’m having a hard time naming him, anyone have any suggestions? 🥺💕"
     },
 }

@@ -8,66 +8,72 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def quarentena(update, context):
-	context.bot.sendPhoto(chat_id=update.effective_chat.id, photo="https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg")
+    imgURL = "https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg"
+    context.bot.sendPhoto(chat_id=update.effective_chat.id, photo=imgURL)
 
 def fofura(update, context):
-    g = random.randint(1,100)
-    gg = (100-g)
-    f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=f)
+    cuteLevel = random.randint(1, 100)
+    archLevel = 100 - cuteLevel
+
+    s = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, cuteLevel, archLevel)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def distro(update, context):
-    lista = ['Debian','Arch','Fedora','Ubuntu','Linux Mint','Manjaro','Gentoo','CentOS','Kali','elementary OS','Puppy','Parrot','Peppermint OS','Oracle']
-    h = "Parabéns, @{}! Sua distro é {}! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'".format(update.effective_user.username, random.choice(lista))
-    context.bot.send_message(chat_id=update.effective_chat.id, text=h)
+    distros = ["Debian",
+               "Arch",
+               "Fedora",
+               "Ubuntu",
+               "Linux Mint",
+               "Manjaro",
+               "Gentoo",
+               "CentOS",
+               "Kali",
+               "Elementary OS",
+               "Puppy",
+               "Parrot",
+               "Peppermint OS",
+               "Oracle"]
+
+    s = "Parabéns, @{}! Sua distro é {}! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'".format(update.effective_user.username, random.choice(distros))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def hal(update, context):
-    abc = "I'm sorry, @{}. I'm afraid I can't do that.".format(update.effective_user.username)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=abc)
+    s = "I'm sorry, @{}. I'm afraid I can't do that.".format(update.effective_user.username)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def corona(update, context):
-	context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('corona.mp3', 'rb'))
+    context.bot.send_audio(chat_id=update.effective_chat.id, audio=open("corona.mp3", "rb"))
 
 def froggypic(update, context):
     randomPhoto = random.choice(list(froggy_pics.keys()))
-    image = froggy_pics[randomPhoto]["img"]
-    caption = froggy_pics[randomPhoto]["cap"]
+    image = froggy_pics[randomPhoto]["file"]
+    caption = "<i>" + froggy_pics[randomPhoto]["caption"] + "</i>"
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
 def asterisco(update, context):
-    args = context.args
-    message = [f"{len(word)*'*'}" for word in args]
-    message = ' '.join(message)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+    """
+    oi kibon -> ** *****
+    oi #kibon# -> oi *****
+    oi #kibon# tudo #bem# -> oi ***** tudo ***
+    """
 
-def asteriscoMisto(update, context):
-    message = update.message.text.partition(' ')[2]
-    newMessage=""
-    if '*' not in message:
-        for count in range(len(message)):
-            if message[count] == ' ':
-                newMessage += ' '
+    message = context.args
+    if not message: return
+
+    s = ""
+    if "#" not in message:
+        s = " ".join("*"*len(word) for word in message.split())
+    elif message.count("#") % 2 == 0:
+        makeStar = False
+        for c in message:
+            if c == "#":
+                makeStar = not makeStar
             else:
-                newMessage += '*'
-    elif message.count('#') % 2 == 0:
-        asteriscoAtivado = 0
-        for count in range(len(message)):
-            if message[count] == '*':
-                if asteriscoAtivado:
-                    asteriscoAtivado = 0
-                else:
-                    asteriscoAtivado = 1
-            else:
-                if asteriscoAtivado:
-                    newMessage += '*'
-                else:
-                    newMessage += message[count]
+                s += ("*" if makeStar else c)
     else:
-        newMessage = "{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=newMessage)
-            
+        s = "@{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
 
-
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def main():
     logger = logging.getLogger(__name__)
@@ -85,13 +91,11 @@ def main():
     dp.add_handler(CommandHandler("corona", corona))
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
-    dp.add_handler(CommandHandler("asteriscoMisto", asteriscoMisto))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
     updater.idle()
     logging.info("=== Oh no, It's dying! ===")
-
 
 if __name__ == "__main__":
     main()
