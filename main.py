@@ -88,7 +88,7 @@ def main():
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s [%(levelname)s] %(message)s")
 
-    updater = Updater(token="1377675743:AAGOPVoJK8GcRnLR6OW8uueIpud4aPNSyao", use_context=True)
+    updater = Updater(token=TOKEN, use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
