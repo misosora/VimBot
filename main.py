@@ -51,23 +51,22 @@ def froggypic(update, context):
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
 def asterisco(update, context):
-    words = context.args
-    if not words: return
+    """
+    oi kibon -> ** *****
+    oi #kibon# -> oi *****
+    oi #kibon# tudo #bem# -> oi ***** tudo ***
+    """
 
-    s = " ".join("*"*len(word) for word in words)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
-
-def asteriscoMisto(update, context):
-    message = update.message.text.partition(" ")[2]
+    message = context.args
     if not message: return
 
     s = ""
-    if "*" not in message:
+    if "#" not in message:
         s = " ".join("*"*len(word) for word in message.split())
     elif message.count("#") % 2 == 0:
         makeStar = False
         for c in message:
-            if c == "*":
+            if c == "#":
                 makeStar = not makeStar
             else:
                 s += ("*" if makeStar else c)
@@ -92,7 +91,6 @@ def main():
     dp.add_handler(CommandHandler("corona", corona))
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
-    dp.add_handler(CommandHandler("asteriscoMisto", asteriscoMisto))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
