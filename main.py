@@ -8,7 +8,7 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def quarentena(update, context):
-	context.bot.sendPhoto(chat_id=update.effective_chat.id, photo="https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg")
+    context.bot.sendPhoto(chat_id=update.effective_chat.id, photo="https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg")
 
 def fofura(update, context):
     g = random.randint(1,100)
@@ -26,7 +26,7 @@ def hal(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=abc)
 
 def corona(update, context):
-	context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('corona.mp3', 'rb'))
+    context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('corona.mp3', 'rb'))
 
 def froggypic(update, context):
     randomPhoto = random.choice(list(froggy_pics.keys()))
@@ -66,9 +66,6 @@ def asteriscoMisto(update, context):
         newMessage = "{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
     context.bot.send_message(chat_id=update.effective_chat.id, text=newMessage)
             
-
-
-
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
@@ -92,6 +89,6 @@ def main():
     updater.idle()
     logging.info("=== Oh no, It's dying! ===")
 
-
 if __name__ == "__main__":
     main()
+    
