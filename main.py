@@ -8,16 +8,31 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def quarentena(update, context):
-    context.bot.sendPhoto(chat_id=update.effective_chat.id, photo="https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg")
+    imgURL = "https://66.media.tumblr.com/319e7285e04bac7c890d8eb542f26fcd/94b95567e3eef4be-03/s1280x1920/c91e807f40c1860f87855d0d953830b07e0a19db.jpg"
+    context.bot.sendPhoto(chat_id=update.effective_chat.id, photo=imgURL)
 
 def fofura(update, context):
-    g = random.randint(1,100)
-    gg = (100-g)
+    g = random.randint(1, 100)
+    gg = 100 - g
     f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
     context.bot.send_message(chat_id=update.effective_chat.id, text=f)
 
 def distro(update, context):
-    lista = ['Debian','Arch','Fedora','Ubuntu','Linux Mint','Manjaro','Gentoo','CentOS','Kali','elementary OS','Puppy','Parrot','Peppermint OS','Oracle']
+    lista = ["Debian",
+             "Arch",
+             "Fedora",
+             "Ubuntu",
+             "Linux Mint",
+             "Manjaro",
+             "Gentoo",
+             "CentOS",
+             "Kali",
+             "Elementary OS",
+             "Puppy",
+             "Parrot",
+             "Peppermint OS",
+             "Oracle"]
+
     h = "Parabéns, @{}! Sua distro é {}! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'".format(update.effective_user.username, random.choice(lista))
     context.bot.send_message(chat_id=update.effective_chat.id, text=h)
 
@@ -26,7 +41,7 @@ def hal(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=abc)
 
 def corona(update, context):
-    context.bot.send_audio(chat_id=update.effective_chat.id, audio=open('corona.mp3', 'rb'))
+    context.bot.send_audio(chat_id=update.effective_chat.id, audio=open("corona.mp3", "rb"))
 
 def froggypic(update, context):
     randomPhoto = random.choice(list(froggy_pics.keys()))
@@ -36,30 +51,30 @@ def froggypic(update, context):
 
 def asterisco(update, context):
     args = context.args
-    message = [f"{len(word)*'*'}" for word in args]
-    message = ' '.join(message)
+    message = ["*"*len(word) for word in args]
+    message = " ".join(message)
     context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
 def asteriscoMisto(update, context):
-    message = update.message.text.partition(' ')[2]
-    newMessage=""
-    if '*' not in message:
+    message = update.message.text.partition(" ")[2]
+    newMessage = ""
+    if "*" not in message:
         for count in range(len(message)):
-            if message[count] == ' ':
-                newMessage += ' '
+            if message[count] == " ":
+                newMessage += " "
             else:
-                newMessage += '*'
-    elif message.count('#') % 2 == 0:
+                newMessage += "*"
+    elif message.count("#") % 2 == 0:
         asteriscoAtivado = 0
         for count in range(len(message)):
-            if message[count] == '*':
+            if message[count] == "*":
                 if asteriscoAtivado:
                     asteriscoAtivado = 0
                 else:
                     asteriscoAtivado = 1
             else:
                 if asteriscoAtivado:
-                    newMessage += '*'
+                    newMessage += "*"
                 else:
                     newMessage += message[count]
     else:
@@ -91,4 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
