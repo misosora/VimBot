@@ -46,8 +46,8 @@ def corona(update, context):
 
 def froggypic(update, context):
     randomPhoto = random.choice(list(froggy_pics.keys()))
-    image = froggy_pics[randomPhoto]["img"]
-    caption = froggy_pics[randomPhoto]["cap"]
+    image = froggy_pics[randomPhoto]["file"]
+    caption = "<i>" + froggy_pics[randomPhoto]["caption"] + "</i>"
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
 def asterisco(update, context):
