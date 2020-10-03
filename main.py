@@ -12,33 +12,34 @@ def quarentena(update, context):
     context.bot.sendPhoto(chat_id=update.effective_chat.id, photo=imgURL)
 
 def fofura(update, context):
-    g = random.randint(1, 100)
-    gg = 100 - g
-    f = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, g, gg)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=f)
+    cuteLevel = random.randint(1, 100)
+    archLevel = 100 - cuteLevel
+
+    s = "O nível de fofura de @{} é {}% e o seu nível de arch user é {}%! (´｡• ᵕ •｡`)".format(update.effective_user.username, cuteLevel, archLevel)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def distro(update, context):
-    lista = ["Debian",
-             "Arch",
-             "Fedora",
-             "Ubuntu",
-             "Linux Mint",
-             "Manjaro",
-             "Gentoo",
-             "CentOS",
-             "Kali",
-             "Elementary OS",
-             "Puppy",
-             "Parrot",
-             "Peppermint OS",
-             "Oracle"]
+    distros = ["Debian",
+               "Arch",
+               "Fedora",
+               "Ubuntu",
+               "Linux Mint",
+               "Manjaro",
+               "Gentoo",
+               "CentOS",
+               "Kali",
+               "Elementary OS",
+               "Puppy",
+               "Parrot",
+               "Peppermint OS",
+               "Oracle"]
 
-    h = "Parabéns, @{}! Sua distro é {}! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'".format(update.effective_user.username, random.choice(lista))
-    context.bot.send_message(chat_id=update.effective_chat.id, text=h)
+    s = "Parabéns, @{}! Sua distro é {}! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'".format(update.effective_user.username, random.choice(distros))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def hal(update, context):
-    abc = "I'm sorry, @{}. I'm afraid I can't do that.".format(update.effective_user.username)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=abc)
+    s = "I'm sorry, @{}. I'm afraid I can't do that.".format(update.effective_user.username)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def corona(update, context):
     context.bot.send_audio(chat_id=update.effective_chat.id, audio=open("corona.mp3", "rb"))
@@ -50,9 +51,8 @@ def froggypic(update, context):
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
 def asterisco(update, context):
-    args = context.args
-    message = ["*"*len(word) for word in args]
-    message = " ".join(message)
+    words = context.args
+    message = " ".join("*"*len(word) for word in words)
     context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
 def asteriscoMisto(update, context):
@@ -79,6 +79,7 @@ def asteriscoMisto(update, context):
                     newMessage += message[count]
     else:
         newMessage = "{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
+
     context.bot.send_message(chat_id=update.effective_chat.id, text=newMessage)
             
 def main():
