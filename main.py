@@ -57,31 +57,22 @@ def asterisco(update, context):
 
 def asteriscoMisto(update, context):
     message = update.message.text.partition(" ")[2]
-    newMessage = ""
-    if "*" not in message:
-        for count in range(len(message)):
-            if message[count] == " ":
-                newMessage += " "
-            else:
-                newMessage += "*"
-    elif message.count("#") % 2 == 0:
-        asteriscoAtivado = 0
-        for count in range(len(message)):
-            if message[count] == "*":
-                if asteriscoAtivado:
-                    asteriscoAtivado = 0
-                else:
-                    asteriscoAtivado = 1
-            else:
-                if asteriscoAtivado:
-                    newMessage += "*"
-                else:
-                    newMessage += message[count]
-    else:
-        newMessage = "{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
 
-    context.bot.send_message(chat_id=update.effective_chat.id, text=newMessage)
-            
+    s = ""
+    if "*" not in message:
+        s = " ".join("*"*len(word) for word in words)
+    elif message.count("#") % 2 == 0:
+        makeStar = False
+        for c in message:
+            if c == "*":
+                makeStar = not makeStar
+            else:
+                s += ("*" if makeStar else c)
+    else:
+        s = "@{}, você não formatou sua entrada corretamente".format(update.effective_user.username)
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
+
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
