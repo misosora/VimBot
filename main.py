@@ -52,15 +52,18 @@ def froggypic(update, context):
 
 def asterisco(update, context):
     words = context.args
-    message = " ".join("*"*len(word) for word in words)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+    if not words: return
+
+    s = " ".join("*"*len(word) for word in words)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
 def asteriscoMisto(update, context):
     message = update.message.text.partition(" ")[2]
+    if not message: return
 
     s = ""
     if "*" not in message:
-        s = " ".join("*"*len(word) for word in words)
+        s = " ".join("*"*len(word) for word in message.split())
     elif message.count("#") % 2 == 0:
         makeStar = False
         for c in message:
