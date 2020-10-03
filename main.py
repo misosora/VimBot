@@ -57,12 +57,12 @@ def asterisco(update, context):
     oi #kibon# tudo #bem# -> oi ***** tudo ***
     """
 
-    message = context.args
+    message = " ".join(context.args)
     if not message: return
 
     s = ""
     if "#" not in message:
-        s = " ".join("*"*len(word) for word in message.split())
+        s = " ".join("*"*len(word) for word in message)
     elif message.count("#") % 2 == 0:
         makeStar = False
         for c in message:
