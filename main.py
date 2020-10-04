@@ -95,13 +95,21 @@ def frogsay(update, context):
 
     context.bot.send_message(chat_id=update.effective_chat.id, text='\n'.join(frogAscii), parse_mode='html')
 
-
-
+sent_images = set()
 def dio(update, context):
     image = "./Dio/"
-    index = random.choice(list(dio_pics.keys()))
-    image += dio_pics[index]["img"]
-    caption = "<i>" + dio_pics[index]["cap"] + "</i>"
+    
+    while True:
+        pic = random.choice(list(dio_pics.keys()))
+        if not sent_images.difference(dio_pics.keys()):
+            sent_images.clear()
+        if pic not in sent_images:
+            sent_images.add(pic)
+            break
+
+    image += dio_pics[pic]["img"]
+    caption = "<i>" + dio_pics[pic]["cap"] + "</i>"
+    
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
 def main():
