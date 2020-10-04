@@ -1,6 +1,8 @@
 from telegram.ext import Updater, CommandHandler
+from telegram import ParseMode
 import logging
 import random
+from env import TOKEN
 from froggies import froggy_pics
 from dio import dio_pics
 
@@ -76,6 +78,23 @@ def asterisco(update, context):
 
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
 
+def frogsay(update, context):
+    fullSpeach = ' '.join(context.args)
+
+    if not fullSpeach:
+        fullSpeach = "mai falar oq?"
+
+    while len(fullSpeach) % 17 != 0:
+        fullSpeach += " "
+
+    speach = [fullSpeach[i:i+17] for i in range(0, len(fullSpeach), 17)]
+    frogAscii = [f"<code>+{17*'-'}+",f"+{17*'-'}+","    \ ","     \ ","       (o)----(o)","       /.______.\ ","       \________/","     ./          \.","     ( .        , )","      \ \_\\\//_/ /   </code>"]
+
+    for i,line in enumerate(speach):
+        frogAscii.insert(i+1, f"|{line}|")
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text='\n'.join(frogAscii), parse_mode='html')
+
 sent_images = set()
 def dio(update, context):
     image = "./Dio/"
@@ -110,6 +129,7 @@ def main():
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
     dp.add_handler(CommandHandler("dio", dio))
+    dp.add_handler(CommandHandler("frogsay", frogsay))
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
