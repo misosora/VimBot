@@ -2,6 +2,7 @@ from telegram.ext import Updater, CommandHandler
 from telegram import ParseMode
 import logging
 import random
+import animes
 from env import TOKEN
 from froggies import froggy_pics
 from dio import dio_pics
@@ -112,6 +113,27 @@ def dio(update, context):
     
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
+def animealeatorio(update, context):
+    chatId = update.message.chat_id
+    messageId = update.message.message_id
+
+    infos = animes.randAnime()
+    animeData = infos[1]
+    id = list(animeData.keys())
+    animeInfos = list(animeData[id[5]][0].keys())
+    while True:
+        animeId = random.randint(1, 305)
+        try:
+            link = animeData[id[5]][animeId][animeInfos[1]]
+            name = animeData[id[5]][animeId][animeInfos[2]]
+            break
+        except:
+            pass
+    
+    msg = f"Toma aqui otakinho ヽ(*⌒▽⌒*)ﾉ o anime <b>{name}</b> é do ano <b>{infos[0]}</b>:\n{link}"
+    context.bot.sendMessage(parse_mode='HTML', chat_id = chatId, text = msg, reply_to_message_id = messageId)
+
+
 def main():
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO,
@@ -129,6 +151,7 @@ def main():
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
     dp.add_handler(CommandHandler("dio", dio))
+    dp.add_handler(CommandHandler("animealeatorio", animealeatorio))
     dp.add_handler(CommandHandler("frogsay", frogsay))
 
     updater.start_polling()
