@@ -2,11 +2,8 @@ from telegram.ext import Updater, CommandHandler
 from telegram import ParseMode
 import logging
 import random
-<<<<<<< HEAD
 import animes
-=======
 from env import TOKEN
->>>>>>> 3d72b80e53cc0084c76bd0d7d940bb28cec9de50
 from froggies import froggy_pics
 from dio import dio_pics
 
@@ -142,7 +139,7 @@ def main():
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s [%(levelname)s] %(message)s")
 
-    updater = Updater(token="1377675743:AAGOPVoJK8GcRnLR6OW8uueIpud4aPNSyao", use_context=True)
+    updater = Updater(token=TOKEN, use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
@@ -154,11 +151,8 @@ def main():
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
     dp.add_handler(CommandHandler("dio", dio))
-<<<<<<< HEAD
     dp.add_handler(CommandHandler("animealeatorio", animealeatorio))
-=======
     dp.add_handler(CommandHandler("frogsay", frogsay))
->>>>>>> 3d72b80e53cc0084c76bd0d7d940bb28cec9de50
 
     updater.start_polling()
     logging.info("=== It's alive! ===")
