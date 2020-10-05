@@ -7,3 +7,4 @@ pycparser==2.20
 python-telegram-bot==12.6.1
 six==1.14.0
 tornado==6.0.4
+jikanpy==4.2.2
