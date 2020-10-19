@@ -7,8 +7,6 @@ from froggies import froggy_pics
 from dio import dio_pics
 from vinho import vinhoImages
 
-TOKEN = "1140857640:AAGEEX5lP5uIxcJxxSAGPIT4HVO87i8Bxrg"
-
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
     context.bot.send_message(chat_id=update.effective_chat.id, text=s)
