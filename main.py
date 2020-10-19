@@ -3,9 +3,11 @@ from telegram import ParseMode
 import logging
 import random
 import animes
-from env import TOKEN
 from froggies import froggy_pics
 from dio import dio_pics
+from vinho import vinhoImages
+
+TOKEN = "1140857640:AAGEEX5lP5uIxcJxxSAGPIT4HVO87i8Bxrg"
 
 def start(update, context):
     s = "Olá, @{}! (• ε •)".format(update.effective_user.username)
@@ -113,6 +115,15 @@ def dio(update, context):
     
     context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
 
+def vinho(update, context):
+
+    image = "./Vinhos/"
+
+    photo = random.choice(list(vinhoImages.keys()))
+    image += vinhoImages[photo]["img"]
+    caption = "<i>" + vinhoImages[photo]["cap"] + "</i>"
+    context.bot.sendPhoto(chat_id=update.message.chat_id, photo=open(image, "rb"), caption=caption, parse_mode="html")
+
 def animealeatorio(update, context):
     chatId = update.message.chat_id
     messageId = update.message.message_id
@@ -151,6 +162,7 @@ def main():
     dp.add_handler(CommandHandler("froggypic", froggypic))
     dp.add_handler(CommandHandler("asterisco", asterisco))
     dp.add_handler(CommandHandler("dio", dio))
+    dp.add_handler(CommandHandler("vinho", vinho))
     dp.add_handler(CommandHandler("animealeatorio", animealeatorio))
     dp.add_handler(CommandHandler("frogsay", frogsay))
 
