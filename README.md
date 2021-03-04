@@ -1,5 +1,6 @@
 ## Vimbot
 Telegram bot created for fun </br>
+[Talk to Me!](https://t.me/vimivbot)
 
 Functions:
 ----------
